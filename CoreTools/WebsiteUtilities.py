@@ -1,0 +1,84 @@
+__author__ = "Yuval Malkan"
+
+import os
+import logging
+import requests
+from Constants import debug
+import re
+from playwright.sync_api import sync_playwright
+import time
+
+TEMP_FOLDER_PATH = "../temp/"
+
+
+
+
+
+
+
+
+def downloadHtml(url):
+    """
+    args: url
+    returns: void, downloads html into temp folder
+
+    """
+
+
+    try:
+        #get absolute path to project roots temp folder
+        BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        TEMP_FOLDER_PATH = os.path.join(BASE_DIR, "temp")
+        os.makedirs(TEMP_FOLDER_PATH, exist_ok=True)  # Ensure folder exists
+
+        path_part = url.split("://")[-1]  # "www.instagram.com/malkan/"
+
+
+        #for instagram, extract username from url
+        if "instagram.com/" in path_part:
+
+            username = path_part.split("instagram.com/")[-1].rstrip("/")
+            print(f"1 {username}")
+            filename = f"instagram_{username}"  # fixme remove hardcoded instagram
+
+
+        else:
+            #for other urls, sanitize but keep dots in the actual content
+            filename = path_part.replace("/", "_").replace("?", "_").replace("&", "_")
+
+        #remove any remaining problematic characters
+        filename = filename.replace(":", "_")
+
+        if not filename:
+            filename = "webpage"
+
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+
+        logging.info(f"downloading {filename}...")
+
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+
+        filepath = os.path.join(TEMP_FOLDER_PATH, f'{filename}.html')
+
+        with open(filepath, 'w', encoding='utf-8') as file:
+            file.write(response.text)
+
+        logging.debug(f"Saved to {filepath}")
+
+    except Exception as e:
+        logging.error(f"Error: {e}")
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    user = input("username: ")
+    #downloadHtml(f"https://www.instagram.com/{user}/")
+    # downloadRenderedHtml(f"https://www.tiktok.com/@shaniamramm") #not working

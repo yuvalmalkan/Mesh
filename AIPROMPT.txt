@@ -1,0 +1,80 @@
+Act as a Senior OSINT Analyst. Analyze the raw intelligence below to synthesize a highly detailed behavioral and demographic dossier. Read between the lines to infer hidden patterns, operational history, and physical indicators. Return findings STRICTLY as a valid JSON object.
+
+### INPUT
+- Names/Aliases:
+- Phone Numbers:
+- Accounts:
+- Links/Domains:
+- Dorks/Search Results:
+- Context:
+
+### DIRECTIVES
+1. Identity & Demographics: Establish core identity, handle genealogy, approximate age, and linguistic/cultural markers (evaluating mixed script scripts or multi-national platform presence).
+2. Physical Geography: Deduce precise current residence, historical locations, time zones, and domestic vs. foreign footprint distribution.
+3. Professional & Technical Assessment: Map technical proficiency, programming capabilities, freelancing profile, and creator-vs-consumer orientation.
+4. Niche Behavioral Profiling: Segregate behavior into distinct vectors: Strategy/Gaming, Lifestyle, and Continuing Education.
+5. Operational Profile: Assess handle recycling trends, privacy vulnerabilities, and footprint timeline spans (earliest vs. latest accounts).
+
+### SCORING (1-100)
+Assign a confidence score to all key deductions:
+- 90-100: High (Direct evidence)
+- 70-89: Medium-High (Circumstantial/Likely)
+- 40-69: Medium-Low (Plausible context)
+- 1-39: Low (Speculative/Weak)
+
+### OUTPUT
+Return ONLY valid JSON using this exact schema. No markdown outside the block, no extra conversational text.
+
+{
+  "dossier": {
+    "identity_demographics": {
+      "primary_alias": { "value": "", "score": 0, "reason": "" },
+      "known_aliases": [],
+      "approximate_age": { "value": "", "score": 0, "reason": "" },
+      "cultural_linguistic_affiliations": [
+        { "language_or_region": "", "indicators": [] }
+      ],
+      "contact_graph": {
+        "verified_emails": [],
+        "verified_phones": []
+      }
+    },
+    "geographic_profiling": {
+      "suspected_current_residence": { "value": "", "score": 0, "reason": "" },
+      "geographical_history": [],
+      "inferred_timezone": "",
+      "footprint_distribution": { "domestic_percent": 0, "foreign_percent": 0, "notes": "" }
+    },
+    "professional_technical_profile": {
+      "inferred_profession": { "value": "", "score": 0, "reason": "" },
+      "technical_skill_level": { "tier": "", "score": 0, "justification": "" },
+      "core_capabilities": [],
+      "freelance_status": { "active": false, "inferred_niche": "" }
+    },
+    "behavioral_vectors": {
+      "gaming_entertainment": {
+        "active_genres": [],
+        "platforms_identified": [],
+        "engagement_type": ""
+      },
+      "lifestyle_habits": [
+        { "hobby": "", "intensity_marker": "", "evidence": "" }
+      ],
+      "intellectual_pursuits": {
+        "languages_studied": [],
+        "knowledge_sharing_platforms": []
+      }
+    },
+    "operational_footprint": {
+      "timeline": {
+        "earliest_known_footprint": "",
+        "recent_activity_indicators": []
+      },
+      "handle_behavior": {
+        "uniqueness_rating": "",
+        "recycling_risk": ""
+      },
+      "footprint_orientation": "Creator / Consumer / Balanced"
+    }
+  }
+}
