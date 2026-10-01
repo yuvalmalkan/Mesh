@@ -25,6 +25,7 @@ from Pages.ui.uiConstants import BwBgNeurons, BlueBgNeurons
 from PyQt6.QtGui import QPixmap, QBrush
 import Client
 import SessionManager
+from Pages.ui.OsintPage import MainWindow
 
 
 class TypingLabel(QLabel):
@@ -210,11 +211,10 @@ def LoginClicked(form: LoginForm):
             SessionManager.set_session(user_id, username, response.get('email', ''))
 
             login_window = form.window()
-            login_window.close()
 
-            from Pages.ui.OsintPage import MainWindow
-            osint_window = MainWindow()
-            osint_window.show()
+            login_window.osint_window = MainWindow()
+            login_window.osint_window.show()
+            login_window.close()
 
 
         else:
