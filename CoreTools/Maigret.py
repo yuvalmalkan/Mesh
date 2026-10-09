@@ -18,6 +18,7 @@ FALSE_POSITIVE_SITES = [
     "SlideShare", "AppleDeveloper", "AppleDiscussions", "Kaggle", "Warface", "HackerNews",
     "WikimapiaSearch", "interpals", "igromania", "Kinja", "hashnode", "MoscowFlamp", "F3.cool", "CNET",
     "Championat", "TomsHardware", "last.fm", "fixya", "sparkpeople", "forums.digitalpoint.com" , "DigitalPoint"
+    , "forums.serebii.net", "DailyMotion"
 ]
 
 def strip_ansi(text: str) -> str:
