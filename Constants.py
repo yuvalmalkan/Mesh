@@ -4,7 +4,7 @@ from UserDatabase import UserDatabase
 import os
 from dotenv import load_dotenv
 
-debug = True
+debug = False
 
 log_level = logging.DEBUG if debug else logging.INFO
 
